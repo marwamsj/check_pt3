@@ -1,0 +1,85 @@
+// Algorithm using a function dot_product .
+FUNCTION dot_product(VAR A1,A2: ARRAY_OF FLOAT[]) : FLOAT
+VAR
+    i:INTEGER;
+    SUM: FLOAT:= 0;
+BEGIN
+    FOR i FROM 0 TO A1.length DO
+        SUM = SUM + A1[i].A2[i];
+        RETURN SUM;
+    END_FOR
+END
+
+ALGORITHM orthogonal
+VAR
+    V,A: ARRAY_OF FLOAT[];
+    ps: FLOAT:=0;
+    n,i,j,k,l,lv :INTEGER;
+BEGIN
+    WRITE ('Dnner la longeur des vecteurs STP')
+    READ (lv)
+    length.A:=lv;
+    WRITE ('Dnner le nombre des vecteurs STP')
+    READ (n)
+    FOR i FROM 0 TO n-1 DO
+         READ (A[i])    
+    END_FOR
+    FOR j FROM 0 TO n-1 DO
+         V.push(A[j])    
+    END_FOR   
+    FOR k FROM 0 TO n-2 DO
+        FOR l FROM k+1 TO n-1 DO            
+           ps:= dot_product(V[k],V[l])
+            IF (ps=0) THEN
+                WRITE(V[k],"et",V[l],"sont orthogonaux")
+            ELSE
+                WRITE(V[k],"et",V[l],"ne sont pas orthogonaux")
+            END_IF
+        END_FOR
+    END_FOR
+END
+
+// Algorithm using a procedure dot_product.
+
+PROCEDURE dot_product (ARR1,ARR2: ARRAY_OF FLOAT[],ps: FLOAT)
+VAR
+    i:INTEGER;
+BEGIN
+    ps:= 0;
+    FOR i FROM 0 TO ARR1.length DO
+        ps = ps + ARR1[i].ARR2[i];
+        WRITE(ps) ;
+    END_FOR
+END
+
+ALGORITHM orthogonal
+VAR
+    V,A,ARR1,ARR2: ARRAY_OF FLOAT[];
+    ps: FLOAT:=0;
+    n,i,j,k,l,lv :INTEGER;
+BEGIN
+    WRITE ('Dnner la longeur des vecteurs STP')
+    READ (lv)
+    length.A:=lv;
+    WRITE ('Dnner le nombre des vecteurs STP')
+    READ (n)
+    FOR i FROM 0 TO n-1 DO
+         READ (A[i])    
+    END_FOR
+    FOR j FROM 0 TO n-1 DO
+         V.push(A[j])    
+    END_FOR
+    
+    FOR k FROM 0 TO n-2 DO
+        FOR l FROM k+1 TO n-1 DO
+         ARR1:= V[k];
+         ARR2 := V[l];
+         dot_product(ARR1,ARR2,ps)
+            IF (ps=0) THEN
+                WRITE(V[k],"et",V[l],"sont orthogonaux")
+            ELSE
+                WRITE(V[k],"et",V[l],"ne sont pas orthogonaux")
+            END_IF
+        END_FOR
+    END_FOR
+END
